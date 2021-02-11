@@ -5,3 +5,14 @@
 .errorMsg {
   display: none;
 }
+.list-group-item {
+  cursor: pointer;
+}
+p {
+  padding: 0;
+  margin: 0;
+}
+
+.currentCourse{
+    background-color: red;
+}

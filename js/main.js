@@ -20,16 +20,15 @@ const authenticated = (data) => {
   const password = document.getElementById("password");
   data.forEach((user) => {
     if (
-      username.value === user.login.username &&
-      password.value === user.login.password
+      username.value == user.login.username &&
+      password.value == user.login.password
     ) {
       successMessage("Yes, du lyckades logga in");
       location.href = "courses.html";
     } else if (
-      username.value !== user.login.username ||
-      password.value !== user.login.password
+      username.value != user.login.username ||
+      password.value != user.login.password
     ) {
-      //   alert("nej")
       errorMessage("Du måste skriva rätt");
     }
   });
@@ -37,19 +36,11 @@ const authenticated = (data) => {
 
 const successMessage = (sMsg) => {
   const msgSuccess = document.querySelector(".successMsg");
-  msgSuccess.style.display = "block";
-  setTimeout(() => {
-    msgSuccess.style.display = "none";
-  }, 1000);
   msgSuccess.innerHTML = sMsg;
 };
 
 const errorMessage = (errMsg) => {
   const errorMsg = document.querySelector(".errorMsg");
-  errorMsg.style.display = "block";
-  setTimeout(() => {
-    errorMsg.style.display = "none";
-  }, 1000);
   errorMsg.innerHTML = errMsg;
 };
 
