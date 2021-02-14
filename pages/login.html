@@ -24,16 +24,15 @@
             <br />
             Lösenord: trinidad
           </p>
-          <p class="lead"></p>
         </div>
         <div class="col-8">
-          <p class="w-75 m-auto bg-success p-1 text-white successMsg"></p>
-          <p class="bg-danger w-75 m-auto p-1 text-white errorMsg"></p>
-          <form class="mt-5 w-75 m-auto">
+          <p class="msg w-75 m-auto p-1 text-white"></p>
+          <form class="mt-5 w-75 m-auto" id="authForm">
             <!-- Email input -->
             <div class="form-outline mb-4">
               <label class="form-label" for="username">Användarnamn</label>
               <input type="text" id="username" class="form-control" />
+              <div class="invalid-feedback">Please choose a username.</div>
             </div>
 
             <!-- Lösenord fält -->
@@ -54,6 +53,6 @@
         </div>
       </div>
     </div>
-    <script src="../js/main.js"></script>
+    <script type="module" src="../js/main.js"></script>
   </body>
 </html>

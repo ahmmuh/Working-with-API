@@ -1,9 +1,10 @@
-.bg-success {
+.bg-danger {
   display: none;
 }
-
-.errorMsg {
-  display: none;
+.errMsg {
+  background-color: red;
+  color: white;
+  padding: 2px;
 }
 .list-group-item {
   cursor: pointer;
@@ -11,9 +12,4 @@
 p {
   padding: 0;
   margin: 0;
-}
-
-.currentCourse {
-}
-.quizList {
 }
