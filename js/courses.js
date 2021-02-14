@@ -1,3 +1,5 @@
+import * as CoursesElements from "./elements.js";
+
 const fetchCourses = () => {
   fetch("http://webbred2.utb.hb.se/~fewe/api/api.php?data=courses")
     .then((res) => res.json())
@@ -5,19 +7,17 @@ const fetchCourses = () => {
 };
 
 const getCourses = (coursesData) => {
-  const courseListContainer = document.querySelector(".courseList");
-  const defaultText = document.querySelector(".defaultText");
   if (coursesData) {
     coursesData.forEach((course) => {
       const li = document.createElement("li");
       li.style.color = "blue";
       li.className = "list-group-item";
-      if (courseListContainer) {
-        courseListContainer.appendChild(li);
+      if (CoursesElements.courseListContainer) {
+        CoursesElements.courseListContainer.appendChild(li);
         li.innerHTML = course.courseName;
       }
       li.addEventListener("click", function () {
-        defaultText.style.display = "none";
+        CoursesElements.defaultText.style.display = "none";
         chooseCourse(course);
       });
     });
@@ -25,17 +25,12 @@ const getCourses = (coursesData) => {
 };
 
 const chooseCourse = (course) => {
-  const courseName = document.querySelector(".courseName");
-  const school = document.querySelector(".schoolName");
-  const credit = document.querySelector(".credit");
-  const startWeek = document.querySelector(".startWeek");
-  const endWeek = document.querySelector(".endWeek");
   if (course) {
-    courseName.innerHTML = course.courseName;
-    school.innerHTML = course.school;
-    credit.innerHTML = `${course.credit} hp`;
-    startWeek.innerHTML = `Startar v ${course.startWeek}`;
-    endWeek.innerHTML = `Slutar v ${course.endWeek}`;
+    CoursesElements.courseName.innerHTML = course.courseName;
+    CoursesElements.school.innerHTML = course.school;
+    CoursesElements.credit.innerHTML = `${course.credit} hp`;
+    CoursesElements.startWeek.innerHTML = `Startar v ${course.startWeek}`;
+    CoursesElements.endWeek.innerHTML = `Slutar v ${course.endWeek}`;
   }
 };
 
