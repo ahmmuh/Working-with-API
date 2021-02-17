@@ -1,41 +1,34 @@
-//http://webbred2.utb.hb.se/~fewe/api/api.php?data=quiz
-
+import { quizApi } from "./data.js";
+import * as QuizElements from "./elements.js";
 let correctList = [];
 let wrongList = [];
 
 const getApi = () => {
-  fetch("http://webbred2.utb.hb.se/~fewe/api/api.php?data=quiz")
+  fetch(quizApi)
     .then((res) => res.json())
     .then((data) => getQuiz(data));
 };
 
 getApi();
-
 // create col and other elements to show quiz data
 
 const getQuiz = (data) => {
-  data.forEach((quizItem) => createQuizElements(quizItem));
+  if (data) {
+    data.forEach((quizItem) => createQuizElements(quizItem));
+  }
 };
 
 const createQuizElements = (quizItem) => {
-  const quizContainer = document.querySelector(".quizList");
-  const answerElement = document.querySelector(".answerElement");
-  const col = document.createElement("div");
-  col.className = "col-4 p-3";
-  const ul = document.createElement("ul");
-  ul.className = "list-group";
-  const question = document.createElement("h5");
-  const correctAnswer = document.createElement("li");
-  correctAnswer.className = "list-group-item";
-  question.innerHTML = quizItem.question;
-  correctAnswer.innerHTML = `${quizItem.correct_answer}`;
-  col.appendChild(question);
-  ul.appendChild(correctAnswer);
-  col.appendChild(ul);
-  quizContainer.appendChild(col);
-  inCorrectAnswers(quizItem, ul);
-  correctAnswer.addEventListener("click", function () {
-    if (correctAnswer.innerHTML === quizItem.correct_answer) {
+  if (quizItem) {
+    inCorrectAnswers(quizItem, QuizElements.ul);
+    getCorrect(quizItem, QuizElements.ul);
+    showQuestions(quizItem, QuizElements.col, QuizElements.quizContainer);
+  }
+
+  QuizElements.correctAnswer.addEventListener("click", function () {
+    if (QuizElements.correctAnswer.innerHTML === quizItem.correct_answer) {
+      QuizElements.correctAnswer.innerHTML = quizItem.correct_answer;
+
       correctAnswer.style.backgroundColor = "green";
       correctAnswer.style.color = "white";
       console.log(quizItem.correct_answer);
@@ -53,8 +46,21 @@ const createQuizElements = (quizItem) => {
     }
   });
 };
+const getCorrect = (quizItem, ul) => {
+  // console.log(ul);
+};
+
+const showQuestions = (quizItem, col, quizContainer) => {
+  const h5 = document.createElement("h5");
+  h5.innerHTML = quizItem.question;
+  col.appendChild(h5);
+  quizContainer.appendChild(col);
+  console.log(h5);
+};
 const inCorrectAnswers = (quizItem, ul) => {
-  quizItem.incorrect_answers.forEach((incorr) => incorrentItems(incorr, ul));
+  if (quizItem) {
+    quizItem.incorrect_answers.forEach((incorr) => incorrentItems(incorr, ul));
+  }
 };
 function incorrentItems(incorr, ul) {
   const li = document.createElement("li");
@@ -66,16 +72,13 @@ function incorrentItems(incorr, ul) {
 
 // check if the user has answered all question and then show message
 
-answeredAllQuestions = (correctList) => {
-  if (correctList.length >= 10) {
-    alert(`Du har svarat på alla frågor ${correctList.length}, bra jobbat !`);
+const answeredAllQuestions = (correctList) => {
+  if (correctList) {
+    console.log(correctList);
+    if (correctList.length >= 10) {
+      alert(`Du har svarat på alla frågor ${correctList.length}, bra jobbat !`);
+    }
   }
 };
 
-// check if the answer is correct or not and then save it to array
-
-// const findAnswer =(quizItem) =>{
-//     if(quizItem.correct_answer){
-//         console.log()
-//     }
-// }
+export { getQuiz, createQuizElements, inCorrectAnswers, answeredAllQuestions };

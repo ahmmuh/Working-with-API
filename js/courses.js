@@ -1,7 +1,7 @@
 import * as CoursesElements from "./elements.js";
-
+import * as Api from './data.js'
 const fetchCourses = () => {
-  fetch("http://webbred2.utb.hb.se/~fewe/api/api.php?data=courses")
+  fetch(Api.coursesAPI)
     .then((res) => res.json())
     .then((coursesData) => getCourses(coursesData));
 };
@@ -17,7 +17,7 @@ const getCourses = (coursesData) => {
         li.innerHTML = course.courseName;
       }
       li.addEventListener("click", function () {
-        CoursesElements.defaultText.style.display = "none";
+       CoursesElements.defaultText.style.display = "none";
         chooseCourse(course);
       });
     });

@@ -1,8 +1,9 @@
 import * as LoginElements from "./elements.js";
 import { errorMessage } from "./validator.js";
+import * as LoginApi from "./data.js";
 
 const getAuthInfo = () => {
-  fetch("http://webbred2.utb.hb.se/~fewe/api/api.php?data=students")
+  fetch(LoginApi.loginApi)
     .then((res) => res.json())
     .then((data) => {
       if (LoginElements.authForm) {
