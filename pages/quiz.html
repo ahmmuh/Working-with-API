@@ -4,19 +4,23 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- added Bootstrap css to use bootstrap different classes to make the layout beautifull -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
       integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
       crossorigin="anonymous"
     />
+    <!-- own css file -->
     <link rel="stylesheet" href="../css/style.css" />
     <title>Quiz</title>
   </head>
   <body>
+    <!-- div wth container class for my navbar -->
+    <!-- in side the container i have navigation menu with two links (courses and quiz) -->
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="login.html">Snöplattform</a>
+        <a class="navbar-brand" href="login.html">Logout</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -47,9 +51,23 @@
         </div>
       </nav>
     </div>
+    <!-- div with container and under it i have created row for my quiz questions and answrs list -->
     <div class="container">
       <div class="row quizList"></div>
     </div>
+    <!-- Jquery and bootstrap cdn -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Här har jag länkat main.js som är main för hela js koden då jag strukturerat min kod och skapat olika moduler
+    main.js filen har module som type för att berätta att jag använder module, på så sätt behövs inte importera alla js filer i html utan importeras dem i main.js. Den ända fil man behöver importera i htmlet är main.js fil -->
     <script type="module" src="../js/main.js"></script>
   </body>
 </html>

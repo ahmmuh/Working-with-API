@@ -3,18 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- added Bootstrap css to use bootstrap different classes to make the layout beautifull -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
       integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
       crossorigin="anonymous"
     />
+    <!-- own css file -->
     <link rel="stylesheet" href="../css/style.css" />
     <title>Inlämnings 1</title>
   </head>
   <body>
+    <!-- använder bootsrap v 4.x
+    skapat en container som håller 2 kolumner, den första är 4 av 12 och den andra är 8 av 12 kolumner
+  //har lagt också margin top med 5 för att ta ner container.
+  -->
     <div class="container mt-5">
-      <div class="row grid-2">
+      <div class="row">
         <div class="col-4">
           <h2>För studenter</h2>
           <p class="lead">
@@ -25,34 +31,35 @@
             Lösenord: trinidad
           </p>
         </div>
+
+        <!-- 8 av 12 kolumner 
+        i den kolumn har jag p med msg class, det visar error message om man skriver fel uppgifter i login formuläret, men lag en till som heter white-text för att göra text färgen vit-->
         <div class="col-8">
-          <p class="msg w-75 m-auto p-1 text-white"></p>
+          <p class="errMsg errClass w-75 m-auto p-1 text-white"></p>
+
           <form class="mt-5 w-75 m-auto" id="authForm">
-            <!-- Email input -->
+            <!-- div med class name "form-outline" och i den har jag e-post input med label för att visa användarnamn text  -->
             <div class="form-outline mb-4">
               <label class="form-label" for="username">Användarnamn</label>
               <input type="text" id="username" class="form-control" />
-              <div class="invalid-feedback">Please choose a username.</div>
             </div>
 
-            <!-- Lösenord fält -->
+            <!-- div med class namen "form-outline" och i den har jag e-post input med label för att visa lösendord text -->
             <div class="form-outline mb-4">
               <label class="form-label" for="password">Lösenord</label>
               <input type="password" id="password" class="form-control" />
             </div>
 
-            <!-- Submit button -->
-            <button
-              type="submit"
-              id="authForm"
-              class="btn btn-danger btn-block"
-            >
+            <!-- submit button med id authForm för att för att fånga upp det med id:et när jag skriver javascript koden -->
+            <button type="submit" class="btn btn-danger btn-block">
               Sign in
             </button>
           </form>
         </div>
       </div>
     </div>
+    <!-- Här har jag länkat main.js som är main för hela js koden då jag strukturerat min kod och skapat olika moduler
+    main.js filen har module som type för att berätta att jag använder module, på så sätt behövs inte importera alla js filer i html utan importeras dem i main.js. Den ända fil man behöver importera i htmlet är main.js fil -->
     <script type="module" src="../js/main.js"></script>
   </body>
 </html>
